@@ -29,7 +29,7 @@ public class Main {
         }
         months.add(7, new Month("August"));
 
-        System.out.println("\nAfter \"August\" insertion: ");
+        System.out.println("\n\nAfter \"August\" insertion: ");
         for (Month month : months) {
             System.out.print(month.getName() + " ");
         }
@@ -37,19 +37,19 @@ public class Main {
         months.add(new Month("January"));
         HashSet<Month> hashSetMonths = new HashSet<>(months);
 
-        System.out.println("\nHashSet Months after a duplicate \"January\" by attribute: ");
+        System.out.println("\n\nHashSet Months after a duplicate \"January\" by attribute: ");
         for (Month month : hashSetMonths) {
             System.out.print(month.getName() + " ");
         }
         Iterator<Month> it = months.iterator();
         Iterator<Month> itHash = hashSetMonths.iterator();
 
-        System.out.println("\nIteration ArrayList: ");
+        System.out.println("\n\nIteration ArrayList: ");
         while (it.hasNext()){
             System.out.print(it.next().getName()+" ");
         }
 
-        System.out.println("\nIteration HashSet: ");
+        System.out.println("\n\nIteration HashSet: ");
         while (itHash.hasNext()){
             System.out.print(itHash.next().getName()+" ");
         }
