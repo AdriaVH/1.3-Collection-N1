@@ -18,15 +18,43 @@ public class Main {
 
         File file = new File(filePath);
         HashMap<String, String> countriesHashMap = new HashMap<>();
+        Scanner sc = new Scanner(System.in);
 
-        Scanner sc = new Scanner(file);
-        while (sc.hasNext()) {
-            String line = sc.nextLine().toLowerCase();
+        Scanner fileSc = new Scanner(file);
+        while (fileSc.hasNext()) {
+            String line = fileSc.nextLine();
             String[] splittedLine = line.split("\\s");
-            System.out.println(splittedLine[0]);
+            countriesHashMap.put(splittedLine[0], splittedLine[1]);
         }
+        System.out.println("Introduce your user name: ");
+        String user = sc.next();
+        List<String> keys = new ArrayList<>(countriesHashMap.keySet());
+        List<Boolean> answers = new ArrayList<>();
+        int points = 0;
+       for (int i = 0; i < 3; i++){
+           String randomCountry = keys.get(new Random().nextInt(keys.size()));
+           System.out.println("What's the capital of "+randomCountry);
+           String userCapital = sc.next();
+           compareWithMap(randomCountry,userCapital,answers, countriesHashMap);
+           points = getPoints(answers);
 
+       }
 
+        System.out.println(points);
 
+    }
+    public static void compareWithMap (String randomCountry,String userCapital, List<Boolean> answers,
+                                       HashMap<String, String> countriesHashMap) {
+    String value = countriesHashMap.get(randomCountry);
+    Boolean answer = value.equalsIgnoreCase(userCapital);
+        answers.add(answer);
+    }
+    public static int getPoints(List<Boolean> answers) {
+        int points = 0;
+        for (Boolean value : answers){
+            if (value){
+                points += points + 1;
+            }
+        }return (points);
     }
 }
