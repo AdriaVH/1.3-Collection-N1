@@ -5,7 +5,6 @@ import java.util.*;
 
 public class Main {
     static Scanner sc = new Scanner(System.in);
-
     public static void main(String[] args) {
         String filePath = "src/rsc/countries.txt";
         File file = new File(filePath);
@@ -18,7 +17,6 @@ public class Main {
         int points = guessTheCapitals(countriesHashMap, numberOfQuestions);
         saveToFile(user, points, numberOfQuestions);
     }
-
     public static void fileToHashMap(File file, HashMap<String, String> countriesHashMap) {
         try {
             Scanner fileSc = new Scanner(file);
@@ -37,13 +35,11 @@ public class Main {
             System.exit(1);
         }
     }
-
-
     public static int guessTheCapitals(HashMap<String, String> countriesHashMap, int times) {
         int result = 0;
-        List<String> keys = new ArrayList<>(countriesHashMap.keySet());
         String randomCountry;
         String userCapital;
+        List<String> keys = new ArrayList<>(countriesHashMap.keySet());
         Collections.shuffle(keys);
 
         for (int i = 0; i < times; i++) {
@@ -56,13 +52,11 @@ public class Main {
         }
         return result;
     }
-
     public static boolean compareWithMap(String randomCountry, String userCapital,
                                       HashMap<String, String> countriesHashMap) {
         String value = countriesHashMap.get(randomCountry);
         return value.equalsIgnoreCase(userCapital);
     }
-
     public static void saveToFile(String user, int points, int times) {
         String fileName = "classificacio.txt";
         try {
